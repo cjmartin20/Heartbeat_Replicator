@@ -1,0 +1,146 @@
+#include "mbed.h"
+
+// main() runs in its own thread in the OS
+int main () {
+	DigitalOut led1(LED1);
+	DigitalOut Blue(LED2);
+	DigitalOut Red(LED3);
+	DigitalOut Green(LED4);
+	led1 = 1;
+	ThisThread::sleep_for( 100ms );
+	while (1) {
+		led1 = 0;
+		for (int i = 0; i < 2; i++ ) {
+			for( int j = 0; j < 2; j++ ) {
+				for( int k = 0; k < 2; k++ ) {
+					Blue = i;
+					Red = j;
+					Green = k;
+					ThisThread::sleep_for( 100ms );
+					//turn off lights
+					led1 = 0;
+					Green = 0;
+					Red = 0;
+					Blue = 0;
+					ThisThread::sleep_for( 25ms );
+				}
+			}
+		}
+		led1 = 1;
+		ThisThread::sleep_for( 200ms );
+	}// end of the while loop
+	/*
+	//loop to replicate 2-bit addition
+	while (1) {
+		// led1 and led2 represent first 2-bit number being added
+		// led3 and led3 represent the 2nd 2-bit number being added
+		// The lights blink and then led1 through led4 represent 4-bit result
+		// Green 2^2, Red 1^2, Blue 0^2
+		led1 = 0;
+		for (int num1_bit1 = 0; i < 2; num1_bit1++ ) {
+			for( int num1_bit2 = 0; j < 2; num1_bit2++ ) {
+				for( int num2_bit1 = 0; k < 2; num2_bit1++ ) {
+					for( int num2_bit2 = 0; k < 2; num2_bit2++ ) {
+						//display first number
+						Blue = num1_bit1;
+						Red = num1_bit2;
+						int first_num = Blue * 1;
+						first_num = first_num + Red * 2;
+						ThisThread::sleep_for( 200ms );
+						//turn off lights
+						led = 0;
+						Green = 0;
+						Red = 0;
+						Blue = 0;
+						//display second number
+						Blue = num2_bit1;
+						Red = num2_bit2;
+						int second_num = Blue * 1;
+						second_num = second_num + Red * 2;
+						ThisThread::sleep_for( 200ms );
+						//turn off lights
+						led = 0;
+						Green = 0;
+						Red = 0;
+						Blue = 0;
+						//turn off lights
+						led = 0;
+						Green = 0;
+						Red = 0;
+						Blue = 0;
+						//display addition result
+						int answer = first_num + second_num;
+						Blue = answer % 2;
+						answer = answer % 2;
+						Red = answer % 2;
+						answer = answer % 2;
+						Green = answer % 2;
+						ThisThread::sleep_for( 500ms );
+						//turn on lights for break between calculations
+						led = 1;
+						Green = 1;
+						Red = 1;
+						Blue = 1;
+						ThisThread::sleep_for( 200ms );
+						//turn off lights
+						led = 0;
+						Green = 0;
+						Red = 0;
+						Blue = 0;
+						ThisThread::sleep_for( 200ms );
+					} //end for4
+				} //end for3
+			} //end for2
+		} //end for1
+		led1 = 1;
+		ThisThread::sleep_for( 100ms );
+	}// end of the while loop
+	*/
+}// end of the mbed program
+/*
+ * 	Question 1
+	led1 = 0;
+        for (int i = 0; i<7; i++) {
+		led1 = 1;
+		ThisThread::sleep_for( 10ms );
+		led1 = 0;
+		ThisThread::sleep_for( 90ms );
+        }
+	Heartbeat
+        for (int i = 0; i<3; i++) {
+		led1 = 1;
+		ThisThread::sleep_for( 10ms );
+		led1 = 0;
+		ThisThread::sleep_for( 45ms );
+	}
+        for (int i = 0; i<3; i++) {
+		led1 = 1;
+		ThisThread::sleep_for( 10ms );
+		led1 = 0;
+		ThisThread::sleep_for( 25ms );
+	}
+        for (int i = 0; i<8; i++) {
+		led1 = 1;
+		ThisThread::sleep_for( 10ms );
+		led1 = 0;
+		ThisThread::sleep_for( 12ms );
+	}
+	led1 = 1;
+	ThisThread::sleep_for( 200ms );
+*/
+
+/*trash
+    DigitalOut led2(LED2);
+    DigitalOut led3(LED3);
+            led2 = !led2;
+            led3 = !led3;
+		led1 = !led1;
+		led2 = !led2;
+		ThisThread::sleep_for(30ms);
+		led2 = !led2;
+		led3 = !led3;
+		ThisThread::sleep_for(30ms);
+		led3 = !led3;
+	led2 = 0;
+	led3 = 0;
+*/
